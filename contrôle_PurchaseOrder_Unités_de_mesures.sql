@@ -8,7 +8,6 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
 CREATE view [dbo].[contrôle_PurchaseOrder_Unités_de_mesures]
 AS
 select	EBELN, 
@@ -28,15 +27,6 @@ from	(	select		EBELN,
 inner join	V_MATERIAL_SAP
 ON			concat('00000000', res.SAP_CODE) = V_MATERIAL_SAP.MATNR
 WHERE		MEINS_PO <> MSEH3
-
-
-
-
-
-
-
---select * from sdbBackup_Material.dbo.BACKUP_External_Number
---select * from V_MATERIAL_SAP
 GO
 
 
