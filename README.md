@@ -1,7 +1,10 @@
 
 ### 
-```SQLCREATE VIEW [dbo].[contrôle_PurchaseOrder_Entete] AS``` 
-#Cette instruction crée une vue nommée contrôle_PurchaseOrder_Entete dans le schéma dbo. Une vue est une requête enregistrée qui peut être utilisée comme une table virtuelle.
+```SQL
+CREATE VIEW [dbo].[contrôle_PurchaseOrder_Entete] AS
+``` 
+#
+Cette instruction crée une vue nommée contrôle_PurchaseOrder_Entete dans le schéma dbo. Une vue est une requête enregistrée qui peut être utilisée comme une table virtuelle.
 ### ```SQLSELECT``` #Cette instruction permet de sélectionner les colonnes à afficher dans la vue.
 ### ```SQLEBELN, – Numéro de commande d’achat``` #Cette colonne contient le numéro de commande d’achat.
 ### ```SQLCASE WHEN EBELN IS NULL OR EBELN = ‘’ THEN ‘NOK, Obligatoire’ WHEN EBELN NOT IN ( SELECT EBELN FROM PurchaseOrder_Postes) THEN ‘NOK, commande n’a pas de postes’ ELSE ‘OK’ END AS contrôle_EBELN,``` #Cette colonne contient le résultat d’une expression conditionnelle qui vérifie la validité du numéro de commande d’achat. Si le numéro est vide ou nul, la colonne affiche ‘NOK, Obligatoire’. Si le numéro n’existe pas dans la table PurchaseOrder_Postes, la colonne affiche ‘NOK, commande n’a pas de postes’. Sinon, la colonne affiche ‘OK’. La colonne est renommée contrôle_EBELN.
